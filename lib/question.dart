@@ -1,10 +1,12 @@
 class Question{
-  String questionText;
-  bool questionAnswer;
+  String question;
+  bool answer;
 
-  Question({String q, bool a}){
-    this.questionText = q;
-    this.questionAnswer = a;
-    
+  Question(String q, bool a){
+    question = q;
+    answer = a;
+
   }
+
+  // Question(this.question,this.answer);
 }
