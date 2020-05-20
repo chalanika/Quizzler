@@ -10,7 +10,7 @@ class Quizzler extends StatelessWidget {
         backgroundColor: Colors.grey.shade900,
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 25.0),
             child: QuizPage(),
           ),
         ),
@@ -35,6 +35,13 @@ class _QuizPageState extends State<QuizPage> {
   List<String> questions =[
     'i want you',
     ' need you',
+    'i lv u',
+  ];
+
+  List<bool> answeres =[
+    true,
+    false,
+    true,
   ];
 
   int questionNumber = 0;
@@ -74,6 +81,10 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer = answeres[questionNumber];
+                if(correctAnswer == true){
+                  
+                }
                 setState(() {
                   scoreKeeper.add(
                     Icon(
