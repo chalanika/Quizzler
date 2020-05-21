@@ -28,4 +28,8 @@ class QuizBrain{
         'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         true),
   ];
+
+  String getQuestion(int questionNumber){
+    return questionBank[questionNumber].question;
+  }
 }
