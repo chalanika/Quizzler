@@ -28,12 +28,14 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-  ];
+  List<Icon> scoreKeeper = [];
+
+  void checkAnswer(bool answer){
+    bool correctAnswer = quizBrain.getAnswer();
+    setState(() {
+      
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

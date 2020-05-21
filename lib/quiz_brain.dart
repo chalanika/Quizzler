@@ -43,8 +43,6 @@ class QuizBrain{
       questionNumber ++;
       print(questionNumber);
       print(questionBank.length);
-    }else{
-      questionNumber = 12;
     }
   }
 }
