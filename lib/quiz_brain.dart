@@ -45,4 +45,12 @@ class QuizBrain{
       print(questionBank.length);
     }
   }
+
+  bool isFinished(){
+    if(questionNumber >= questionBank.length - 1){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

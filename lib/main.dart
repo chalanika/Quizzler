@@ -33,7 +33,9 @@ class _QuizPageState extends State<QuizPage> {
   void checkAnswer(bool answer){
     bool correctAnswer = quizBrain.getAnswer();
     setState(() {
-      
+      if(quizBrain.isFinished() == true){
+        
+      }
     });
   }
 
