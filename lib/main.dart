@@ -35,7 +35,6 @@ class _QuizPageState extends State<QuizPage> {
     ),
   ];
 
-  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -48,7 +47,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questionBank[questionNumber].question,
+                quizBrain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -72,8 +71,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.questionBank[questionNumber].answer;
+                bool correctAnswer = quizBrain.getAnswer();
                 if (correctAnswer == true) {
                   print('correct');
                 } else {
@@ -86,7 +84,7 @@ class _QuizPageState extends State<QuizPage> {
                   //     color: Colors.green,
                   //   ),
                   // );
-                  questionNumber++;
+                  quizBrain.nextNumber();
                 });
               },
             ),
@@ -105,8 +103,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.questionBank[questionNumber].answer;
+                bool correctAnswer = quizBrain.getAnswer();
                 //The user picked false.ool
                 if (correctAnswer == false) {
                   print('correct');
@@ -120,7 +117,7 @@ class _QuizPageState extends State<QuizPage> {
                   //     color: Colors.red,
                   //   ),
                   // );
-                  questionNumber++;
+                 quizBrain.nextNumber();
                 });
               },
             ),
