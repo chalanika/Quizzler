@@ -53,4 +53,8 @@ class QuizBrain{
       return false;
     }
   }
+
+  void reset(){
+    questionNumber =0;
+  }
 }

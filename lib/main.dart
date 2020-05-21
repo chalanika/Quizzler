@@ -35,7 +35,24 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer = quizBrain.getAnswer();
     setState(() {
       if (quizBrain.isFinished() == true) {
-        
+        Alert(
+          context: context,
+          type: AlertType.success,
+          title: "Congratulations",
+          desc: "You are completed successfully! Play Again.",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "COOL",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () => Navigator.pop(context),
+              width: 120,
+            )
+          ],
+        ).show();
+        quizBrain.reset();
+        scoreKeeper = [];
       } else {
         if (userAnswer == correctAnswer) {
           scoreKeeper.add(
@@ -94,7 +111,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-               checkAnswer(true);
+                checkAnswer(true);
               },
             ),
           ),
@@ -112,7 +129,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-               checkAnswer(false);
+                checkAnswer(false);
               },
             ),
           ),
