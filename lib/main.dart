@@ -30,6 +30,8 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
+  int sucess=0;
+  int wrong=0;
 
   void checkAnswer(bool userAnswer) {
     bool correctAnswer = quizBrain.getAnswer();
@@ -39,11 +41,11 @@ class _QuizPageState extends State<QuizPage> {
           context: context,
           type: AlertType.success,
           title: "Congratulations",
-          desc: "You are completed successfully! Play Again.",
+          desc: "You are completed successfully! Score - $sucess/13",
           buttons: [
             DialogButton(
               child: Text(
-                "COOL",
+                "Play Again",
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               onPressed: () => Navigator.pop(context),
@@ -53,6 +55,8 @@ class _QuizPageState extends State<QuizPage> {
         ).show();
         quizBrain.reset();
         scoreKeeper = [];
+        sucess=0;
+        wrong=0;
       } else {
         if (userAnswer == correctAnswer) {
           scoreKeeper.add(
@@ -62,6 +66,7 @@ class _QuizPageState extends State<QuizPage> {
             ),
           );
           quizBrain.nextNumber();
+          sucess ++;
         } else {
           scoreKeeper.add(
             Icon(
@@ -70,6 +75,7 @@ class _QuizPageState extends State<QuizPage> {
             ),
           );
           quizBrain.nextNumber();
+          wrong ++;
         }
       }
     });
