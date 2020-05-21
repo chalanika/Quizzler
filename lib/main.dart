@@ -28,23 +28,11 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeeper =[
+  List<Icon> scoreKeeper = [
     Icon(
       Icons.check,
-      color:Colors.green,
+      color: Colors.green,
     ),
-  ];
-
-  List<String> questions =[
-    'i want you',
-    ' need you',
-    'i lv u',
-  ];
-
-  List<bool> answeres =[
-    true,
-    false,
-    true,
   ];
 
   int questionNumber = 0;
@@ -60,7 +48,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                quizBrain.questionBank[questionNumber].question,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -84,18 +72,21 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = answeres[questionNumber];
-                if(correctAnswer == true){
-                  
+                bool correctAnswer =
+                    quizBrain.questionBank[questionNumber].answer;
+                if (correctAnswer == true) {
+                  print('correct');
+                } else {
+                  print('wrong');
                 }
                 setState(() {
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ),
-                  );
-                  questionNumber ++;
+                  // scoreKeeper.add(
+                  //   Icon(
+                  //     Icons.check,
+                  //     color: Colors.green,
+                  //   ),
+                  // );
+                  questionNumber++;
                 });
               },
             ),
@@ -114,7 +105,23 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
+                bool correctAnswer =
+                    quizBrain.questionBank[questionNumber].answer;
+                //The user picked false.ool
+                if (correctAnswer == false) {
+                  print('correct');
+                } else {
+                  print('wrong');
+                }
+                setState(() {
+                  // scoreKeeper.add(
+                  //   Icon(
+                  //     Icons.close,
+                  //     color: Colors.red,
+                  //   ),
+                  // );
+                  questionNumber++;
+                });
               },
             ),
           ),
