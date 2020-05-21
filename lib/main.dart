@@ -30,11 +30,29 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
-  void checkAnswer(bool answer){
+  void checkAnswer(bool userAnswer) {
     bool correctAnswer = quizBrain.getAnswer();
     setState(() {
-      if(quizBrain.isFinished() == true){
+      if (quizBrain.isFinished() == true) {
         
+      } else {
+        if (userAnswer == correctAnswer) {
+          scoreKeeper.add(
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+          );
+          quizBrain.nextNumber();
+        } else {
+          scoreKeeper.add(
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          );
+          quizBrain.nextNumber();
+        }
       }
     });
   }
@@ -75,21 +93,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrain.getAnswer();
-                if (correctAnswer == true) {
-                  print('correct');
-                } else {
-                  print('wrong');
-                }
-                setState(() {
-                  // scoreKeeper.add(
-                  //   Icon(
-                  //     Icons.check,
-                  //     color: Colors.green,
-                  //   ),
-                  // );
-                  quizBrain.nextNumber();
-                });
+               checkAnswer(true);
               },
             ),
           ),
@@ -107,22 +111,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrain.getAnswer();
-                //The user picked false.ool
-                if (correctAnswer == false) {
-                  print('correct');
-                } else {
-                  print('wrong');
-                }
-                setState(() {
-                  // scoreKeeper.add(
-                  //   Icon(
-                  //     Icons.close,
-                  //     color: Colors.red,
-                  //   ),
-                  // );
-                 quizBrain.nextNumber();
-                });
+               checkAnswer(false);
               },
             ),
           ),

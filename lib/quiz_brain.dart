@@ -47,7 +47,7 @@ class QuizBrain{
   }
 
   bool isFinished(){
-    if(questionNumber >= questionBank.length - 1){
+    if(questionNumber >= questionBank.length-1){
       return true;
     }else{
       return false;
