@@ -62,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
           scoreKeeper.add(
             Icon(
               Icons.check,
-              color: Colors.green,
+              color: Colors.blue,
             ),
           );
           quizBrain.nextNumber();
